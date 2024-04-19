@@ -11,5 +11,5 @@ cart.add(movie2);
 console.log(cart.getTotalPrice());
 console.log(cart.getDiscountTotalPrice(10));
 
-cart.deleteItem(1);
-console.log(cart);
+console.log(cart.deleteItem(1))
+// console.log(cart);

@@ -12,26 +12,19 @@ export default class Cart {
   }
 
   getTotalPrice(): number {
-    let summ: number = 0;
-    for (const item of this._items) {
-      summ += item.price;
-    }
-    return summ;
+    const totalPrice = this._items.reduce((totalAmount, amount) => {
+      return totalAmount + amount.price;
+    }, 0)
+    return totalPrice;
   }
 
   getDiscountTotalPrice(discount: number): number {
-    let summ: number = 0;
-    for (const item of this._items) {
-      summ += item.price;
-    }
+    let summ = this.getTotalPrice();
+
     return summ - (summ / 100) * discount;
   }
 
-  deleteItem(id: number): void {
-    for (let i: number = 0; i < this._items.length; i++) {
-      if (this._items[i].id === id) {
-        this._items.splice(i, 1);
-      }
-    }
+  deleteItem(id: number) {
+   return this._items.filter(item => item.id !== id);
   }
 }
